@@ -14,18 +14,19 @@
         <script type="text/javascript">
             <!--
                 $(function(){
-                    
-                    $("#prefectures").text("未受信");
+                    // 表示領域を初期化
+                    $("#prefectures").text("UNKNOWN");
+
+                    // JSON形式で都道府県データを取得
                     alert('サーバに都道府県データをGET要求します');
-//                    $.get("RequestServlet", function(data){
-//                        alert("Data Loaded: " + data);
-//                        var obj = JSON.parse(data);
-//                        $("#prefectures").text(obj.a);
-//                    });
-//                    
                     $.getJSON("RequestServlet", function(data){
+                        // JSON取得成功時の処理
                         alert("Data Loaded: " + data);
-                        $("#prefectures").text(data.pref[2]);
+                        var str = "";
+                        for (var i=0; i<data.pref.length; ++i){
+                            str += data.pref[i] + "<br>";
+                        }
+                        $("#prefectures").html(str);
                     });
                     
                 });
