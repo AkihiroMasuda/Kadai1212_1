@@ -20,37 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 public class RequestServlet extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-              out.println("{\"pref\":["
-                      + "\"北海道\","
-                      + "\"青森県\","
-                      + "\"秋田県\","
-                      + "\"岩手県\","
-                      + "\"福島県\","
-                      + "\"東京都\","
-                      + "\"神奈川県\","
-                      + "\"広島県\""
-                      + "]}");
-        } finally {            
-            out.close();
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
      * Handles the HTTP
      * <code>GET</code> method.
      *
@@ -62,7 +31,21 @@ public class RequestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        try {
+              out.println("{\"pref\":["
+                      + "\"北海道\","
+                      + "\"青森県\","
+                      + "\"岩手県\","
+                      + "\"宮城県\","
+                      + "\"秋田県\","
+                      + "\"山形県\","
+                      + "\"福島県\""
+                      + "]}");
+        } finally {            
+            out.close();
+        }
     }
 
     /**
@@ -77,16 +60,5 @@ public class RequestServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 }
